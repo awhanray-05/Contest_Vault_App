@@ -1,5 +1,8 @@
 package com.example.contestvault.ui
 
+/*
+import androidx.compose.material.icons.filled.Menu
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -18,7 +21,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,11 +38,11 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.contestvault.MainViewModel_1
+import com.example.contestvault.viewModels.MainViewModel_1
 import com.example.contestvault.R
-import com.example.contestvault.Screen
-import com.example.contestvault.screenInDrawer
+import com.example.contestvault.screens.Screen
+import com.example.contestvault.data.Result
+import com.example.contestvault.screens.screenInDrawer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -113,7 +115,7 @@ fun MainView(modifier: Modifier, viewState: MainViewModel_1.ResultState) {
 }
 
 @Composable
-fun ResultScreen(results: List<com.example.contestvault.Result>) {
+fun ResultScreen(results: List<Result>) {
     LazyColumn {
         items(results) {it ->
             Card(
@@ -123,12 +125,14 @@ fun ResultScreen(results: List<com.example.contestvault.Result>) {
                 elevation = 4.dp
                 ) {
                     Column() {
-                        Text(results.get(0).username)
-                        Text(results.get(0).userInstitute)
+                        Text("Start")
+                        results.get(0).username?.let { it1 -> Text(it1) }
+                        results.get(0).userInstitute?.let { it1 -> Text(it1) }
                         Text(results.get(0).userRank.toString())
-                        Text(results.get(0).userTotalScore)
-                        Text(results.get(0).userLastAcceptedTime)
+                        results.get(0).userTotalScore?.let { it1 -> Text(it1) }
+                        results.get(0).userLastAcceptedTime?.let { it1 -> Text(it1) }
                         Text(results.get(0).userProblemsSolved.toString())
+                        Text("End")
                     }
                 }
             }
@@ -161,3 +165,101 @@ fun DrawerItem(
         Text(text = item.dTitle, fontWeight = txtStyle, color = txtColor, modifier = Modifier.padding(top = 2.dp), fontSize = 20.sp)
     }
 }
+ */
+
+
+
+//import androidx.compose.foundation.background
+//import androidx.compose.foundation.layout.*
+//import androidx.compose.foundation.lazy.LazyColumn
+//import androidx.compose.foundation.lazy.items
+//import androidx.compose.material.Scaffold
+//import androidx.compose.material.TopAppBar
+//import androidx.compose.material3.CircularProgressIndicator
+//import androidx.compose.material3.Icon
+//import androidx.compose.material3.IconButton
+//import androidx.compose.material3.Text
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.rememberCoroutineScope
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.graphics.Color
+//import androidx.compose.ui.res.colorResource
+//import androidx.compose.ui.unit.dp
+//import androidx.compose.ui.unit.sp
+//import com.example.contestvault.viewModels.MainViewModel_1
+//import com.example.contestvault.R
+//import com.example.contestvault.Result
+//import kotlinx.coroutines.launch
+//
+//@Composable
+//fun MainView(modifier: Modifier, viewState: MainViewModel_1.ResultState) {
+//    val scope = rememberCoroutineScope()
+//
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text("Home", fontSize = 20.sp) },
+//                backgroundColor = colorResource(R.color.app_bar_color),
+//                navigationIcon = {
+//                    IconButton(onClick = { /* Handle drawer open */ }) {
+//                        Icon(imageVector = androidx.compose.material.icons.Icons.Default.Menu, contentDescription = "Menu")
+//                    }
+//                }
+//            )
+//        }
+//    ) { paddingValues ->
+//        Box(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .padding(paddingValues)
+//                .background(colorResource(R.color.app_background))
+//        ) {
+//            when {
+//                viewState.loading -> {
+//                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+//                }
+//                viewState.error != null -> {
+//                    Text(
+//                        text = "Error: ${viewState.error}",
+//                        color = Color.Red,
+//                        modifier = Modifier.align(Alignment.Center)
+//                    )
+//                }
+//                else -> {
+//                    ResultScreen(viewState.list)
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//@Composable
+//fun ResultScreen(results: List<Result>) {
+//    if (results.isEmpty()) {
+//        Text("No results found", Modifier.padding(16.dp))
+//    } else {
+//        LazyColumn {
+//            items(results) { result ->
+//                ResultCard(result)
+//            }
+//        }
+//    }
+//}
+//
+//@Composable
+//fun ResultCard(result: Result) {
+//    Column(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(8.dp)
+//            .background(Color.LightGray)
+//    ) {
+//        Text("Username: ${result.username ?: "N/A"}")
+//        Text("Institute: ${result.userInstitute ?: "N/A"}")
+//        Text("Rank: ${result.userRank}")
+//        Text("Score: ${result.userTotalScore ?: "N/A"}")
+//        Text("Last Accepted Time: ${result.userLastAcceptedTime ?: "N/A"}")
+//        Text("Problems Solved: ${result.userProblemsSolved}")
+//    }
+//}

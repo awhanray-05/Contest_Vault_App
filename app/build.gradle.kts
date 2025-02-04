@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.contestvault"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -50,6 +50,13 @@ dependencies {
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.material:material:$compose_version")
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
+
+    // AndroidX Core
+    implementation("androidx.core:core-ktx:1.12.0")
+
+    // Coroutine Support for Jetpack Compose
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.4")
@@ -63,10 +70,8 @@ dependencies {
     // Json to Kotlin object Mapping
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    implementation ("com.squareup.okhttp3:okhttp:4.11.0") // Optional for direct HTTP requests
-//    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
-//    implementation ("org.jsoup:jsoup:1.16.1")
-
+    // Image Loading
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
